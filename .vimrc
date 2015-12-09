@@ -1,7 +1,16 @@
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
+set guifont=Consolas:h16
 let g:solarized_termtrans=1
+
+" vundle setup
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " Make Vim more useful
 set nocompatible
@@ -41,7 +50,7 @@ set modelines=4
 set exrc
 set secure
 " Enable line numbers
-set number
+" set number
 " Enable syntax highlighting
 syntax on
 " Highlight current line
@@ -58,7 +67,7 @@ set ignorecase
 " Highlight dynamically as pattern is typed
 set incsearch
 " Always show status line
-set laststatus=2
+" set laststatus=2
 " Enable mouse in all modes
 set mouse=a
 " Disable error bells
@@ -76,10 +85,10 @@ set title
 " Show the (partial) command as it’s being typed
 set showcmd
 " Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
+" if exists("&relativenumber")
+" 	set relativenumber
+" 	au BufReadPost * set relativenumber
+" endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
@@ -94,6 +103,29 @@ endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
+nmap <silent> <leader>e :execute 'NERDTreeToggle ' . getcwd()<CR>
+nmap <silent> <leader>t :execute 'CommandT'<CR>
+nmap <silent> <leader>s :set nolist!<CR>
+nmap <C-p> <ESC>:set invpaste paste?<CR>
+nmap <C-n> <ESC>:set invnumber number?<CR>
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'godlygeek/tabular'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'wincent/Command-T'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " Automatic commands
 if has("autocmd")

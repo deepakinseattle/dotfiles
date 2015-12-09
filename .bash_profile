@@ -46,3 +46,12 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+# AWS commands completer
+complete -C aws_completer aws
+
+# Direnv
+eval "$(direnv hook $0)"
+
+# Rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
