@@ -36,7 +36,8 @@ brew install bash-completion2
 brew install wget --with-iri
 
 # Install more recent versions of some OS X tools.
-brew install vim --override-system-vi
+brew install luajit
+brew install vim --override-system-vi --with-lua
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
@@ -101,7 +102,7 @@ brew install little-cms2
 brew install logstash
 brew install lua
 brew install lzlib
-brew install macvim
+brew install macvim --with-cscope --with-lua
 brew install markdown
 brew install moreutils
 brew install mpfr
@@ -133,6 +134,7 @@ brew install readline
 brew install ruby-build
 brew install sfcgal
 brew install sqlite
+brew install the_silver_searcher
 brew install tree
 brew install v8
 brew install wget

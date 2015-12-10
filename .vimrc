@@ -57,6 +57,10 @@ syntax on
 set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
+" number of spaces in tab when editing
+set softtabstop=2
+" tabs are spaces
+set expandtab
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
@@ -105,15 +109,16 @@ noremap <leader>ss :call StripWhitespace()<CR>
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 nmap <silent> <leader>e :execute 'NERDTreeToggle ' . getcwd()<CR>
-nmap <silent> <leader>t :execute 'CommandT'<CR>
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <C-p> <ESC>:set invpaste paste?<CR>
 nmap <C-n> <ESC>:set invnumber number?<CR>
+nnoremap <leader>t :CtrlP<CR>
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
@@ -122,7 +127,6 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
-Plugin 'wincent/Command-T'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -140,3 +144,9 @@ if has("autocmd")
 	autocmd BufWritePre * StripWhitespace
 endif
 
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
