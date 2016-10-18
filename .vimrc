@@ -1,9 +1,3 @@
-" Use the Solarized Dark theme
-set background=dark
-colorscheme solarized
-set guifont=Consolas:h16
-let g:solarized_termtrans=1
-
 " vundle setup
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
@@ -34,14 +28,17 @@ let mapleader=","
 set binary
 set noeol
 " Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
+set backupdir=~/.vim/backups//
+set directory=~/.vim/swaps//
 if exists("&undodir")
-	set undodir=~/.vim/undo
+  set undodir=~/.vim/undo//
 endif
 
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
+
+" automatically load changed files
+set autoread
 
 " Respect modeline in files
 set modeline
@@ -61,6 +58,8 @@ set tabstop=2
 set softtabstop=2
 " tabs are spaces
 set expandtab
+" auto indent width
+set shiftwidth=2
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
@@ -90,19 +89,19 @@ set title
 set showcmd
 " Use relative line numbers
 " if exists("&relativenumber")
-" 	set relativenumber
-" 	au BufReadPost * set relativenumber
+"   set relativenumber
+"   au BufReadPost * set relativenumber
 " endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
@@ -112,21 +111,23 @@ nmap <silent> <leader>e :execute 'NERDTreeToggle ' . getcwd()<CR>
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <C-p> <ESC>:set invpaste paste?<CR>
 nmap <C-n> <ESC>:set invnumber number?<CR>
-nnoremap <leader>t :CtrlP<CR>
 
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
+Plugin 'wincent/Command-T'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ap/vim-css-color'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -134,19 +135,26 @@ filetype plugin indent on    " required
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-	" Strip whitespace at the end of lines on a save
-	autocmd BufWritePre * StripWhitespace
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Strip whitespace at the end of lines on a save
+  autocmd BufWritePre * StripWhitespace
 endif
 
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+nnoremap <leader>t :CommandT<CR>
+set wildignore+=**/.git/*,**/log/*
+let g:CommandTFileScanner="find"
+
+" puts the caller
+nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+
+" Use the Solarized Dark theme
+set background=dark
+" colorscheme solarized
+colorscheme gruvbox
+set guifont=Consolas:h18
+" let g:solarized_termtrans=1
