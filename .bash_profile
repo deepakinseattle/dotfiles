@@ -55,3 +55,6 @@ eval "$(direnv hook $0)"
 
 # Rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# sets up docker env variables if you are using minikube(https://github.com/kubernetes/minikube)
+if (which minikube > /dev/null && minikube status | grep Running > /dev/null); then eval $(minikube docker-env); fi
