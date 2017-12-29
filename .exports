@@ -33,4 +33,3 @@ export SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
 
 #Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
