@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Make Neo Vim the default editor.
+export EDITOR="nvim"
+
+# Increase Bash history size. Allow 32³ entries; the default is 500.
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+# Erase duplicates
+export HISTCONTROL='erasedups';
+
+# Hide the “default interactive shell is now zsh” warning on macOS.
+export BASH_SILENCE_DEPRECATION_WARNING=1;
