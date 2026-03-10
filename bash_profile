@@ -34,3 +34,6 @@ eval "$(direnv hook bash)"
 
 # Added by `rbenv init` on Tue Mar 10 16:37:30 PDT 2026
 eval "$(rbenv init - --no-rehash bash)"
+
+# https://starship.rs/guide/
+eval "$(starship init bash)"
