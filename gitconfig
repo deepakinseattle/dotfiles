@@ -1,0 +1,49 @@
+[alias]
+  # View abbreviated SHA, description, and history graph of the latest 20 commits.
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+  # View the current working tree status using the short format.
+  s = status -s
+
+  # Show verbose output about tags, branches or remotes
+  tags = tag -l
+  branches = branch --all
+  remotes = remote --verbose
+
+[branch]
+  # Show most recently changed branches first.
+  sort = -committerdate
+
+[commit]
+  gpgsign = true
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+
+[core]
+  excludesfile = ~/.gitignore
+
+[diff]
+  # Detect copies as well as renames.
+  renames = copies
+
+[help]
+  # Automatically correct and execute mistyped commands.
+  autocorrect = 1
+
+[push]
+  # https://git-scm.com/docs/git-config#git-config-pushdefault
+  default = current
+  # Make `git push` push relevant annotated tags when pushing branches out.
+  followTags = true
+
+[user]
+	name = Deepak Kumar
+	email = dee.kumar@gmail.com
+	signingkey = /Users/deepak/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
