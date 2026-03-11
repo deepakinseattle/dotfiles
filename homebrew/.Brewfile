@@ -19,6 +19,7 @@ brew "node"
 brew "rbenv"
 brew "ruby-build"
 brew "starship"
+brew "stow"
 brew "tree"
 brew "wget"
 
