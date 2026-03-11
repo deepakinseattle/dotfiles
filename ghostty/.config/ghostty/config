@@ -56,3 +56,8 @@ font-family="MonoLisa Variable"
 font-size=16
 font-feature=-liga
 font-thicken=true
+
+# Keybindings
+keybind = super+shift+arrow_left=previous_tab
+keybind = super+shift+arrow_right=next_tab
+
