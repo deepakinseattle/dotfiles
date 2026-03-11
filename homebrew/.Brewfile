@@ -21,6 +21,7 @@ brew "ruby-build"
 brew "starship"
 brew "stow"
 brew "tree"
+brew "tree-sitter-cli"
 brew "wget"
 
 cask "discord"
